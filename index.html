@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitcoin Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+        form {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #58a6ff;
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            width: 100%;
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bitcoin Price Predictor</h1>
+    <form method="post">
+        <label>
+            Days:
+            <input type="number" name="days" required>
+        </label>
+        <label>
+            SMA 7:
+            <input type="number" step="0.01" name="sma_7" required>
+        </label>
+        <label>
+            SMA 30:
+            <input type="number" step="0.01" name="sma_30" required>
+        </label>
+        <label>
+            Volatility:
+            <input type="number" step="0.0001" name="volatility" required>
+        </label>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Predicted BTC Price: {{ prediction }}</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
